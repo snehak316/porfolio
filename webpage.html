@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneha k - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0.5;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: slideIn 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        .about img {
+            max-width: 200px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border: 5px solid #3498db;
+            transition: transform 0.3s;
+        }
+
+        .about img:hover {
+            transform: scale(1.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: #3498db;
+            color: #fff;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            transition: transform 0.5s;
+        }
+
+        .skill-card:hover::before {
+            transform: scale(0.5);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background: #2980b9;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #2c3e50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.3s;
+        }
+
+        .contact-links a:hover::before {
+            left: 100%;
+        }
+
+        .contact-links a:hover {
+            background: #3498db;
+            transform: scale(1.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #2c3e50;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .about img {
+                max-width: 150px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .skills-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Accessibility */
+        a:focus, button:focus {
+            outline: 3px solid #3498db;
+            outline-offset: 3px;
+        }
+
+        img {
+            display: block;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SNEHA K</h1>
+        <p>FIRST YEAR CSE STUDENT</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <img src="sneha.k.jpg" alt="Sneha K profile picture">
+            <p>My name is Sneha K, and I am currently a first-year student pursuing my degree in Computer Science. I have a keen interest in web development and love exploring new technologies. I enjoy working on creative projects that allow me to learn and grow my skills in HTML, CSS, and JavaScript. Apart from coding, I like reading, sketching, and watching science fiction movies. This portfolio is a part of my first-year assignment to showcase my learning and interests in web design.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">HTML5</div>
+                <div class="skill-card">CSS3</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">React</div>
+                <div class="skill-card">Node.js</div>
+                <div class="skill-card">Git</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project One</h3>
+                    <p>A chrome extenstion for note saving.</p>
+                                    </div>
+                <div class="project-card">
+                    <h3>Project Two</h3>
+                    <p>A portfolio website showcasing my design skills.</p>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me through any of the following platforms:</p>
+            <div class="contact-links">
+                <a href="https://linkedin.com/in/sneha-k-aa5a4432b" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/snehak316" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:snehak6002@gmail.com">Email</a>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Sneha K. All rights reserved.</p>
+    </footer>
+</body>
+</html>
